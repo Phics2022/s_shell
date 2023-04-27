@@ -3,12 +3,52 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
+
 /**
- * main - does the shell main work
+ * main - run simple shell
+ * @ac: number of args
+ * @av: executor
  *
  * Return: 0
- **/
-int main(void)
+ */
+int main(__attribute__((unused)) int ac, char **av)
 {
-printf("$\n");
+int status;
+int start = 1;
+char *command = NULL;
+size_t input;
+char *arg[100];
+ssize_t checker;
+int execute;
+pid_t pid;
+while (start)
+{
+printf("$ ");
+fflush(stdout);
+checker = getline(&command, &input, stdin);
+if (checker == -1)
+	break;
+_strtok(command, arg);
+pid = fork();
+if (pid == 0)
+{
+	execute = execve(arg[0], arg, NULL);
+	if (execute == -1)
+	{
+		perror(av[0]);
+		exit(1);
+	}
+}
+else if (pid < 0)
+{
+	perror(av[0]);
+}
+else
+{
+wait(&status);
+}
+}
+free(command);
+return (0);
 }
