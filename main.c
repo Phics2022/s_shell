@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -15,6 +16,7 @@
 int main(__attribute__((unused)) int ac, char **av)
 {
 int status;
+bool is_trm = isatty(fileno(stdin));
 int start = 1;
 char *command = NULL;
 size_t input;
@@ -24,8 +26,11 @@ int execute;
 pid_t pid;
 while (start)
 {
+if (is_trm)
+{
 printf("$ ");
 fflush(stdout);
+}
 checker = getline(&command, &input, stdin);
 if (checker == -1)
 	break;
