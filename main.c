@@ -13,7 +13,7 @@
  *
  * Return: 0
  */
-int main(__attribute__((unused)) int ac, char **av)
+int main(__attribute__((unused)) int ac, char **av, char **env)
 {
 int status;
 bool is_trm = isatty(fileno(stdin));
@@ -38,7 +38,7 @@ _strtok(command, arg);
 pid = fork();
 if (pid == 0)
 {
-	execute = execve(arg[0], arg, NULL);
+	execute = execve(arg[0], arg, env);
 	if (execute == -1)
 	{
 		perror(av[0]);
