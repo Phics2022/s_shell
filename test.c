@@ -11,6 +11,6 @@ int main(void)
 	{
 		printf("getline failed\n");
 	}
-	printf("Your command is %sand the length is %ld\n", ptr, check);
+	printf("Your command is %sand the length is %zd\n", ptr, check);
 	return (0);
 }
