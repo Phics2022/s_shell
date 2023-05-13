@@ -9,3 +9,5 @@
 #include <ctype.h>
 #include <sys/types.h>
 #include <signal.h>
+#include <limits.h>
+#include <stddef.h>
