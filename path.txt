@@ -1,0 +1,1 @@
+/data/data/com.termux/files/usr/bin/lsvalib/os-framework.jar/lssjar/ls
