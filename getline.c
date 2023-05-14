@@ -2,24 +2,20 @@
 
 #include "main.h"
 
-ssize_t _getline(__attribute__((unused))char **ptr, __attribute__((unused))size_t *n)
+ssize_t _getline(char **ptr, __attribute__((unused))size_t *n, FILE *stream)
 {
-	char *buff = malloc(sizeof(char *) * 1024);
+	char *buff = malloc(sizeof(char ) * 1024);
 	/*read the command prompt*/
-	ssize_t read_check = read(STDIN_FILENO, buff, 1024);
+	ssize_t read_check = read(fileno(stream), buff, 1024);
 	int i;
-	read_check -= 1;
-	if (read_check == -1)
+	if (read_check == 0)
 	{
-		perror("read");
-		return (read_check);
+		return (-1);
 	}
 	/* equal n to length*/
+	read_check -= 1;
 	/*malloc ptr*/
-	if (*ptr == NULL)
-	{
-		*ptr = malloc(sizeof(char ) * read_check);
-	}
+	*ptr = malloc(sizeof(char ) * read_check);
 	/*copy the buff into the ptr*/
 	for(i = 0; i < read_check; i++)
 	{
@@ -27,5 +23,6 @@ ssize_t _getline(__attribute__((unused))char **ptr, __attribute__((unused))size_
 	}
 	(*ptr)[i] = '\0';
 	/*return the read byte*/
+	free(buff);
 	return (read_check);
 }
