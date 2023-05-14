@@ -2,7 +2,7 @@
 int main(void)
 {
 	char *path =  getenv("PATH");
-	char *args[4000];
+	char **args = malloc(sizeof(char *) * 400);
 	char *tok = strtok(path, ":");
 	int fd;
 	int i = 0;
@@ -11,14 +11,13 @@ int main(void)
 		fd = open("path", O_RDWR | O_CREAT | O_TRUNC);
 		write(fd, tok, strlen(tok));
 		write(fd, "/ls", 3);
-		args[i] = malloc(strlen(tok) + 3);
-		read(fd, args[i], (strlen(tok) + 3));
+		*(args + i) = malloc(strlen(tok) + 3);
+		read(fd, *(args + i), (strlen(tok) + 3));
 		close(fd);
-		printf("%s\n", args[i]);
+		write(STDOUT_FILENO, *(args + i), strlen(*(args + i)));
 		i++;
 		tok = strtok(NULL, ":");
 	}
-	args[i] = NULL;
-	printf("%s", args[0]);
+	*(args + i) = '\0';
 return (0);
 }
