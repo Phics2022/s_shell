@@ -10,13 +10,13 @@
  */
 int main(__attribute__((unused)) int ac, char **av, char **env)
 {
-int status;
-bool is_trm = isatty(fileno(stdin));
-int start = 1;
-char *command = NULL;
-size_t input;
-char *arg[100];
-ssize_t checker;
+	int status;
+	bool is_trm = isatty(fileno(stdin));
+	int start = 1;
+	char *command = NULL;
+	size_t input;
+	char *arg[100];
+	ssize_t checker;
 int execute;
 pid_t pid;
 while (start)
@@ -29,7 +29,7 @@ fflush(stdout);
 checker = _getline(&command, &input, stdin);
 if (checker == -1)
 	break;
-_strtok(command, arg);
+_path_finder(command, arg);
 pid = fork();
 if (pid == 0)
 {

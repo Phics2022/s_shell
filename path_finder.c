@@ -8,10 +8,11 @@
  *
  * Return: void
  */
-void _strtok(char *command, char *arg[])
+void _path_finder(char *command, char *arg[])
 {
 int loop = 0;
 char *delim = " \n";
+char *token = strtok(command, delim);
 char *path_holder[300];
 int i = 0;
 char *path = getenv("PATH");
