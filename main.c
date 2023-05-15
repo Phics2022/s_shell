@@ -1,10 +1,5 @@
-#include "shell.h"
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
+#include "phics.h"
+#include "main.h"
 
 /**
  * main - run simple shell
@@ -31,7 +26,7 @@ if (is_trm)
 printf("$ ");
 fflush(stdout);
 }
-checker = getline(&command, &input, stdin);
+checker = _getline(&command, &input, stdin);
 if (checker == -1)
 	break;
 _strtok(command, arg);

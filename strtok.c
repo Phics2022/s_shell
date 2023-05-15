@@ -1,7 +1,5 @@
-#include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "phics.h"
+#include "main.h"
 /**
  * _strtok - tokenise command
  * @command: command

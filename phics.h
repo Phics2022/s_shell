@@ -11,3 +11,4 @@
 #include <signal.h>
 #include <limits.h>
 #include <stddef.h>
+#include <stdbool.h>
