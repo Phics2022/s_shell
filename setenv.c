@@ -39,8 +39,8 @@ int _setenv( char *name, char *value, int overwrite)
 
 int main(void)
 {
-	_setenv("PHICS", "SE", 0);
-	setenv("CHURA", "SE", 0);
+	_setenv("PHIC", "SE", 0);
+	setenv("CHUR", "SE", 0);
 	printf("success\n");
 	return 0;
 }
