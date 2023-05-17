@@ -16,11 +16,7 @@ int _setenv( char *name, char *value, int overwrite)
 	/*allocate memory for the new environ*/
 	*new_env = malloc(sizeof(char *) * (env_length + 2));
 	/*copy environ into new environ*/
-	for(i = 0; i < env_length; i++)
-	{
-		new_env[i] = environ[i];
-		/*note i did not null terminate after the loop*/
-	}
+	new_env = environ;
 	/*copy the name=value into the new var*/
 	total_length = strlen(name) + strlen(value) + 2;
 	new_var = malloc(sizeof(char) * total_length);
@@ -39,8 +35,8 @@ int _setenv( char *name, char *value, int overwrite)
 
 int main(void)
 {
-	_setenv("PHIC", "SE", 0);
-	setenv("CHUR", "SE", 0);
+	_setenv("PHICS", "SE", 0);
+	setenv("CHURA", "SE", 0);
 	printf("success\n");
 	return 0;
 }
