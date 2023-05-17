@@ -9,7 +9,7 @@ extern char **environ;
 int _unsetenv(const char *name)
 {
 	char **env = environ;
-	if(getenv(name) == NULL);
+	if(getenv(name) == NULL)
 	{
 		printf("%s does not exist\n", name);
 		return (0);
@@ -17,7 +17,7 @@ int _unsetenv(const char *name)
 
 	while(*env != NULL)
 	{
-		if (strncmp(*env, name, strlen(name) == 0 && (env)[strlen(name)] == "="))
+		if (strncmp(*env, name, strlen(name) == 0))
 		{
 			char **point = env;
 			while(*point != NULL)
@@ -35,4 +35,5 @@ int _unsetenv(const char *name)
 int main(void)
 {
 	_unsetenv("CHURA");
+	return (0);
 }

@@ -2,8 +2,8 @@
 #include "main.h"
 int _setenv( char *name, char *value, int overwrite)
 {
-	int env_length, total_length, i;
-	char **new_env;
+	int env_length, total_length;
+	char **new_env = NULL;
 	char *new_var;
 	/*check if val exists and if overwite is allowed*/
 	/*by default i made overwrite un available by giving it the value of 0*/
@@ -36,7 +36,7 @@ int _setenv( char *name, char *value, int overwrite)
 int main(void)
 {
 	_setenv("PHICS", "SE", 0);
-	setenv("CHURA", "SE", 0);
+	setenv("CHURA", "se", 0);
 	printf("success\n");
 	return 0;
 }
