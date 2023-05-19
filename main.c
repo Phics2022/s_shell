@@ -29,8 +29,8 @@ fflush(stdout);
 checker = _getline(&command, &input, stdin);
 if (checker == -1)
 	break;
-_path_finder(command, arg);
 pid = fork();
+_path_finder(command, arg);
 if (pid == 0)
 {
 	execute = execve(arg[0], arg, env);

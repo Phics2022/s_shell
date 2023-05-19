@@ -10,6 +10,7 @@
 void add_node(path **head, char *value)
 {
 	path *temp = malloc(sizeof(path));
+	path *temp2 = *head;
 	temp->var = value;
 	temp->next = NULL;
 	if (*head == NULL)
@@ -17,7 +18,6 @@ void add_node(path **head, char *value)
 		*head = temp;
 		return;
 	}
-	path *temp2 = *head;
 	while (temp2->next != NULL)
 	{
 		temp2 = temp2->next;
