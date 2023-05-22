@@ -1,28 +1,18 @@
-#include "phics.h"
-
-#include "main.h"
-#define MAX_PATH 300
-ssize_t _getline(char **ptr, __attribute__((unused))size_t *n, FILE *stream)
+#include "header.h"
+#include "shell.h"
+#define MAX_PATH 256
+ssize_t _getline(char **lineptr, __attribute__((unused)) size_t *n, FILE *stream)
 {
-	char *buff = malloc(sizeof(char ) * MAX_PATH);
-	/*read the command prompt*/
-	ssize_t read_check = read(fileno(stream), buff, MAX_PATH);
-	int i;
-	if (read_check == 0 || read_check == -1)
+	/*first of all we read and store it into a buff*/
+	char buff[MAX_PATH] = "";
+	ssize_t read_count = 0;
+	*lineptr = malloc(sizeof(char) * MAX_PATH);
+	read_count = read(fileno(stream), buff, 256);
+	if (read_count == 0 || read_count == -1)
 	{
 		return (-1);
 	}
-	/* equal n to length*/
-	read_check -= 1;
-	/*malloc ptr*/
-	*ptr = malloc(sizeof(char ) * read_check);
-	/*copy the buff into the ptr*/
-	for(i = 0; i < read_check; i++)
-	{
-		(*ptr)[i] = buff[i];
-	}
-	(*ptr)[i] = '\0';
-	/*return the read byte*/
-	free(buff);
-	return (read_check);
+	/*copy the buff into lineptr*/
+	strcpy(*lineptr, buff);
+	return (read_count);
 }

@@ -12,10 +12,3 @@
 #include <limits.h>
 #include <stddef.h>
 #include <stdbool.h>
-typedef struct path
-{
-	char *var;
-	struct path *next;
-}path;
-
-
