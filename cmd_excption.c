@@ -8,13 +8,15 @@
   */
 int handle_commands(char *args[])
 {
-	char *val = malloc(sizeof(char) * 21);
-	int i;
-	i = atoi(val);
+	int exit_status;
 	if(strcmp(args[0], "exit") == 0)
 	{
-		free(val);
-		exit(i);
+		if (args[1] != NULL)
+		{
+			exit_status = atoi(args[1]);
+			exit(exit_status);
+		}
+		exit(EXIT_SUCCESS);
 	}
 	return (0);
 }
