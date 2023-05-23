@@ -18,5 +18,10 @@ int handle_commands(char *args[])
 		}
 		exit(EXIT_SUCCESS);
 	}
+	if (strcmp(args[0], "cd") == 0)
+	{
+		cd_dir(args[1]);
+		return(1);
+	}
 	return (0);
 }

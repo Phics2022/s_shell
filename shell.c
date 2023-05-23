@@ -32,8 +32,9 @@ int main(__attribute__((unused)) int ac, char **av)
 			args[loop] = strtok(NULL, delim);
 		}
 		args[loop] = NULL;
-		handle_commands(args);
 		loop = 0;
+		if (handle_commands(args) == 1)
+			continue;
 		handle_path(args[0], ag);	
 		if((access(ag, X_OK | F_OK)) == -1)
 		{
